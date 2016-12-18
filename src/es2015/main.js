@@ -3,7 +3,8 @@ const module = angular.module('gallery', ['ngRoute','cfp.hotkeys']),
 
 
 let nowPage = 0,
-	watchImgId = 0;
+	watchImgId = 0,
+	pages = [];
 
 module.config(function($routeProvider) {
 	$routeProvider
@@ -31,27 +32,32 @@ module.config(function($sceDelegateProvider) {
 	]);
 });
 
-module.config(function(hotkeysProvider) {
-	hotkeysProvider.useNgRoute = false;
-});
 
 module.controller('photos', function($scope,$http,$routeParams,$location,$sce,getData){
 	$scope.nowPage = nowPage;
 	$scope.watchImgId = watchImgId;
-	$http({
-		method: 'JSONP',
-		url: url
-	}).then(function (response) {
-		$scope.data = response.data.entries;
-		getData.getPages($scope);
-		console.log('$scope', $scope.pages);
+	if (!pages[0]) {
+		$http({
+			method: 'JSONP',
+			url: url
+		}).then(function (response) {
+			$scope.data = response.data.entries;
+			getData.getPages($scope);
+			pages = $scope.pages;
+			if($routeParams.num) {
+				nowPage = $routeParams.num-1;
+				$scope.nowPage = $routeParams.num-1;
+			}
+		}, function (err) {
+			console.log(err);
+		});
+	} else {
+		$scope.pages = pages;
 		if($routeParams.num) {
 			nowPage = $routeParams.num-1;
 			$scope.nowPage = $routeParams.num-1;
 		}
-	}, function (err) {
-		console.log(err);
-	});
+	}
 });
 
 module.controller('photo', function($scope,$http,$routeParams,$location,$sce,getData,hotkeys){
@@ -90,12 +96,27 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 			}
 		}
 	});
-	$http({
-		method: 'JSONP',
-		url: url
-	}).then(function (response) {
-		$scope.data = response.data.entries;
-		getData.getPages($scope);
+	if (!pages[0]) {
+		$http({
+			method: 'JSONP',
+			url: url
+		}).then(function (response) {
+			$scope.data = response.data.entries;
+			getData.getPages($scope);
+			pages = $scope.pages;
+			if($routeParams.id) {
+				watchImgId = $routeParams.id;
+				nowPage = Math.floor(watchImgId/12);
+				$scope.watchImgId = watchImgId;
+				$scope.nowPage = nowPage;
+				let photoNum = watchImgId-nowPage*12;
+				$scope.photo = $scope.pages[nowPage][photoNum];
+			}
+		}, function (err) {
+			console.log(err);
+		});
+	} else {
+		$scope.pages = pages;
 		if($routeParams.id) {
 			watchImgId = $routeParams.id;
 			nowPage = Math.floor(watchImgId/12);
@@ -104,9 +125,8 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 			let photoNum = watchImgId-nowPage*12;
 			$scope.photo = $scope.pages[nowPage][photoNum];
 		}
-	}, function (err) {
-		console.log(err);
-	});
+	}
+
 });
 
 module.factory('getData', function($http){
