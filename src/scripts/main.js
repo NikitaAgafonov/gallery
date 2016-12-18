@@ -25,6 +25,10 @@ _module.config(function ($sceDelegateProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist(['self', url]);
 });
 
+_module.config(function (hotkeysProvider) {
+	hotkeysProvider.useNgRoute = false;
+});
+
 _module.controller('photos', function ($scope, $http, $routeParams, $location, $sce, getData) {
 	$scope.nowPage = nowPage;
 	$scope.watchImgId = watchImgId;

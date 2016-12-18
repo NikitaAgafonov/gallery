@@ -31,6 +31,10 @@ module.config(function($sceDelegateProvider) {
 	]);
 });
 
+module.config(function(hotkeysProvider) {
+	hotkeysProvider.useNgRoute = false;
+});
+
 module.controller('photos', function($scope,$http,$routeParams,$location,$sce,getData){
 	$scope.nowPage = nowPage;
 	$scope.watchImgId = watchImgId;
