@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-xs-4 col-md-3" ng-repeat="val in pages[nowPage]">
+		<a href="#!/photo{{$index+nowPage*12}}" class="thumbnail">
+			<img src="{{val.img.M.href}}" alt="...">
+		</a>
+	</div>
+</div>
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+	<div class="btn-group" role="group" aria-label="...">
+		<a ng-repeat="page in pages" ng-href="#!/page{{$index+1}}">
+			<button type="button" class="btn btn-default">{{$index+1}}</button>
+		</a>
+	</div>
+</div>

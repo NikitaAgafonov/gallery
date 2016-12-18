@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app='gallery'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- build:css css/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="libs/angular-hotkeys/build/hotkeys.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css css/main.css -->
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<!-- endbuild -->
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="libs/angular/angular.js"></script>
+	<script src="libs/angular-route/angular-route.js"></script>
+	<script src="libs/jquery/dist/jquery.js"></script>
+	<script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="libs/angular-hotkeys/build/hotkeys.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/main.js -->
+	<script type="text/javascript" src="scripts/main.js"></script>
+	<!-- endbuild -->
+</head>
+<body>
+	<header class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-brand">Gallery</div>
+			<div class="navbar-form navbar-right">
+				<img src="img/icon.svg" width="117" height="30">
+			</div>
+		</div>
+	</header>
+	<main class='container' ng-view>
+		
+	</main>
+</body>
+</html>
