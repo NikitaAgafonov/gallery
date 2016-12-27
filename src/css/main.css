@@ -43,7 +43,8 @@ header main {
     .flex .flex-center img {
       display: block;
       margin-left: auto;
-      margin-right: auto; }
+      margin-right: auto;
+      width: 100%; }
   .flex .flex-left {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
@@ -57,3 +58,6 @@ header main {
 
 .panel-heading a {
   color: white; }
+
+.btn-toolbar {
+  text-align: center; }
