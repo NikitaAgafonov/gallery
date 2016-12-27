@@ -7,7 +7,7 @@ let nowPage = 0,
 	watchImgId = 0,
 	pages = [];
 
-module.config(function($routeProvider) {
+module.config(function($routeProvider){
 
 	$routeProvider
 
@@ -32,7 +32,7 @@ module.config(function($routeProvider) {
 
 });
 
-module.config(function($sceDelegateProvider) {
+module.config(function($sceDelegateProvider){
 
 	$sceDelegateProvider.resourceUrlWhitelist([
 		'self',
@@ -42,7 +42,7 @@ module.config(function($sceDelegateProvider) {
 });
 
 
-module.controller('photos', function($scope,$http,$routeParams,$location,$sce,getData){
+module.controller('photos',function($scope,$http,$routeParams,$location,$sce,getData){
 
 	$scope.nowPage = nowPage;
 	$scope.watchImgId = watchImgId;
@@ -55,7 +55,7 @@ module.controller('photos', function($scope,$http,$routeParams,$location,$sce,ge
 			url: url
 		})
 
-		.then(function (response) {
+		.then(function(response){
 
 				$scope.data = response.data.entries;
 				getData.getPages($scope);
@@ -86,7 +86,7 @@ module.controller('photos', function($scope,$http,$routeParams,$location,$sce,ge
 	}
 });
 
-module.controller('photo', function($scope,$http,$routeParams,$location,$sce,getData,hotkeys){
+module.controller('photo',function($scope,$http,$routeParams,$location,$sce,getData,hotkeys){
 
 
 	$scope.nowPage = nowPage;
@@ -94,7 +94,7 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 	let photoNum;
 
 
-	$scope.selectPhoto = function (num) {
+	$scope.selectPhoto = function(num){
 
 		if (num) {
 
@@ -119,7 +119,7 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 		combo: 'left',
 		description: 'prevPhoto',
 
-		callback: function() {
+		callback: function(){
 			if (watchImgId>0) {
 				watchImgId--;
 				$location.path('/photo'+watchImgId);
@@ -134,7 +134,7 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 		combo: 'right',
 		description: 'nextPhoto',
 
-		callback: function() {
+		callback: function(){
 			if (watchImgId<countImg) {
 				watchImgId++;
 				$location.path('/photo'+watchImgId);
@@ -151,7 +151,7 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 			url: url
 		})
 
-		.then(function (response) {
+		.then(function(response){
 
 				$scope.data = response.data.entries;
 				getData.getPages($scope);
@@ -188,10 +188,10 @@ module.controller('photo', function($scope,$http,$routeParams,$location,$sce,get
 	}
 });
 
-module.factory('getData', function($http){
+module.factory('getData',function($http){
 
 	return {
-		getPages: function ($scope) {
+		getPages: function($scope){
 
 			$scope.pages = [];
 			let j = 0,
