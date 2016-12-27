@@ -99,7 +99,7 @@ gulp.task('babel', () => {
         .pipe(gulp.dest(config.scripts));
 });
 
-gulp.task('watch', ['browser-sync', 'sass'], function () {
+gulp.task('watch', ['browser-sync', 'sass', 'babel'], function () {
 	gulp.watch(config.sass+'/**/*.+(scss|sass)', ['sass']);
 	gulp.watch(config.babelES+'/**/*.js', ['babel']);
 	gulp.watch(config.project+'**/*.+(css|html|js)').on('change', browserSync.reload);
