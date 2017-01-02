@@ -14,4 +14,43 @@
       display: none;
     }
   }
+  .navbar-form {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .flex {
+    flex-wrap: wrap;
+    .flex-left {
+      margin: 10px;
+      order: 2;
+      align-self:center;
+      cursor: pointer;
+      max-width: 50px;
+      max-height: 50px;
+    }
+    .flex-center {
+      order: 0;
+      width: 100%;
+      align-self:center;
+      img {
+        min-width: 100%;
+        min-height: 100%;
+        margin: 0;
+      }
+    }
+    .flex-right {
+      margin: 10px;
+      order: 1;
+      align-self:center;
+      cursor: pointer;
+      max-width: 50px;
+      max-height: 50px;
+    }
+  }
 }
