@@ -27,7 +27,7 @@ module.config(function($routeProvider){
 		})
 
 		.otherwise({
-			template: '<center><h1>404 NOT FOUND</h1></center>'
+			template: '<h1 class="error">404 NOT FOUND</h1>'
 		})
 
 });
@@ -87,7 +87,6 @@ module.controller('photos',function($scope,$http,$routeParams,$location,$sce,get
 });
 
 module.controller('photo',function($scope,$http,$routeParams,$location,$sce,getData,hotkeys){
-
 
 	$scope.nowPage = nowPage;
 	$scope.watchImgId = watchImgId;
