@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title pull-left">{{photo.title}}</div>
+		<a href="#!/page{{nowPage+1}}">
+			<span class="panel-title right  pull-right"><img src="./img/close.png" width="15px" height="15px"></span>
+		</a>
+		<div class="clearfix"></div>
+	</div>
+	<div class="panel-body">
+		<div class="flex">
+			<div class="flex-right" >
+				<button type="button" ng-click="selectPhoto(0)"  class="btn btn-info">Prev</button>
+			</div>
+			<div class="flex-center">
+				<img src="{{photo.img.XL.href}}"  class="thumbnail" alt="Загрузка">
+			</div>
+			<div class="flex-left">
+				<button type="button" ng-click="selectPhoto(1)"  class="btn btn-info">Next</button>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">Author: {{photo.author}}</div>
+</div>
