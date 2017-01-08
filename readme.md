@@ -5,13 +5,9 @@ Developed with Bootstrap and AngularJS
 `/src/` - folder with source code.
 
 # Get started
-npm install:
+install dependencies:
 ```
-npm install
-```
-install bower:
-```
-bower i
+npm start
 ```
 Great! You can try application:
 ```
